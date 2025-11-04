@@ -1,0 +1,59 @@
+
+Cadence Innovus(TM) Implementation System.
+Copyright 2020 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version:	v20.14-s095_1, built Mon Apr 19 14:41:42 PDT 2021
+Options:	
+Date:		Sun Nov  2 22:20:01 2025
+Host:		cad13 (x86_64 w/Linux 3.10.0-1160.el7.x86_64) (6cores*12cpus*Intel(R) Core(TM) i7-8700 CPU @ 3.20GHz 12288KB)
+OS:		Red Hat Enterprise Linux Server release 7.9 (Maipo)
+
+License:
+		invs	Innovus Implementation System	20.1	checkout succeeded
+		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+Change the soft stacksize limit to 0.2%RAM (31 mbytes). Set global soft_stack_size_limit to change the value.
+
+**INFO:  MMMC transition support version v31-84 
+
+<CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+<CMD> suppressMessage ENCEXT-2799
+<CMD> getVersion
+<CMD> getVersion
+<CMD> getVersion
+[INFO] Loading PVS 20.11 fill procedures
+<CMD> win
+<CMD> set init_design_settop 0
+<CMD> set init_mmmc_file Default.view
+<CMD> init_design
+#% Begin Load MMMC data ... (date=11/02 22:20:38, mem=672.0M)
+#% End Load MMMC data ... (date=11/02 22:20:38, total cpu=0:00:00.0, real=0:00:00.0, peak res=672.4M, current mem=672.4M)
+Rc
+**ERROR: (IMPIMEX-3):	There is no verilog netlist found in init_verilog. The variable is either not specified or specified incorrectly. Check the location of Verilog file in the global file.
+<CMD> set init_design_settop 0
+<CMD> set init_mmmc_file Default.view
+<CMD> init_design
+#% Begin Load MMMC data ... (date=11/02 22:20:39, mem=672.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+The existing analysis_view 'wc' has been replaced with new attributes.
+The existing analysis_view 'bc' has been replaced with new attributes.
+INFO: New setup and hold views overwrite old settings during design initialization
+#% End Load MMMC data ... (date=11/02 22:20:39, total cpu=0:00:00.0, real=0:00:00.0, peak res=672.7M, current mem=672.7M)
+Rc
+**ERROR: (IMPIMEX-3):	There is no verilog netlist found in init_verilog. The variable is either not specified or specified incorrectly. Check the location of Verilog file in the global file.
+<CMD> save_global Default.globals
+<CMD> set init_design_settop 0
+<CMD> set init_mmmc_file Default.view
+<CMD> init_design
+#% Begin Load MMMC data ... (date=11/02 22:20:43, mem=673.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+The existing analysis_view 'wc' has been replaced with new attributes.
+The existing analysis_view 'bc' has been replaced with new attributes.
+INFO: New setup and hold views overwrite old settings during design initialization
+#% End Load MMMC data ... (date=11/02 22:20:43, total cpu=0:00:00.0, real=0:00:00.0, peak res=673.5M, current mem=673.5M)
+Rc
+**ERROR: (IMPIMEX-3):	There is no verilog netlist found in init_verilog. The variable is either not specified or specified incorrectly. Check the location of Verilog file in the global file.
+<CMD> win off
