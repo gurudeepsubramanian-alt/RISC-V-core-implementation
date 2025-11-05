@@ -29,36 +29,17 @@ This project demonstrates a minimal, teaching‑friendly ASIC design built aroun
 ## 🧠 Architecture
 
 > RISC-V inspired 2-stage pipelined processor (Fetch + Execute)
+flowchart TD
 
-### 🔹 High-Level Block Diagram
+PC[Program Counter (PC)] -->|Address| IMEM[Instruction Memory<br/>(24-bit)]
+IMEM -->|Instruction| IFID[IF/ID Pipeline Register]
 
-```
-        ┌───────────────┐
-        │ Program Counter│
-        │     (PC)       │
-        └───────┬───────┘
-                │ PC
-                ▼
-        ┌───────────────────┐
-        │ Instruction Memory │
-        │   (24‑bit ROM)    │
-        └───────┬──────────┘
-                │ Instruction
-        ┌───────▼───────┐
-        │ IF/ID Pipeline │
-        │   Register     │
-        └───────┬───────┘
-                │ Decoded Fields
-        ┌───────▼────────────────────────┐
-        │             ALU                │
-        │  grp/opcode → Operation        │
-        │  R1,R2 → Operands              │
-        └───────┬────────────────────────┘
-                │ Writeback
-        ┌───────▼──────┐
-        │ Register File │   (R0 updated) 
-        │ R0,R1,R2      │
-        └───────────────┘
+IFID -->|Decoded Fields| ALU[ALU<br/>grp + opcode → Operation<br/>R1, R2 → Operands]
+ALU -->|Writeback| REG[Register File<br/>R0, R1, R2]
+
+REG -->|Operands| ALU
+PC -->|PC+1| PC
+
 ```
 
 ### 🔹 Pipeline Stage View
