@@ -471,8 +471,8 @@ This project was completed with support and guidance from:
 
 ## 👨‍🎓 About the Developer
 
-- Gurudeep  
-- Roll No.: 123EC0022  
+- 1)Gurudeep
+- 2)Manideep Vanga
 - Electronics and Communication Engineering  
 - IIITDM Kurnool  
 
