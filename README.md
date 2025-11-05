@@ -1,4 +1,4 @@
-# 2‑Stage Pipelined Mini‑Processor: RTL → GDSII
+# 2‑Stage Pipelined Risc-V Processor: RTL → GDSII
 
 **VLSI Technology & License Status:** Academic flow using Cadence Genus & Innovus with university licenses. Repository contains RTL, testbench, and reproducible TCL; *no foundry IP is included*.
 
@@ -90,41 +90,50 @@ This project demonstrates a minimal, teaching‑friendly ASIC design built aroun
 
 This section presents the backend implementation results after place, route, and timing closure in Cadence Innovus.
 
+### 🔹 Simulation — Cadence Nc-Launch
+<img width="1920" height="1080" alt="waveform" src="https://github.com/user-attachments/assets/b924cf6a-0527-4e1d-90a8-b25532176029" />
+
 ### 🔹 Post-Synthesis Schematic — Cadence Genus
 
 Regularized gate‑level representation showing mapped standard cells.
 
-![Post-Synthesis Schematic](sandbox:/mnt/data/bbcde337-ca21-431a-ac7a-f50a79cf2341.png)
+<img width="1920" height="1080" alt="genus synthesis" src="https://github.com/user-attachments/assets/60e67f64-e848-48b6-a033-2a91b0b3765c" />
+
 
 ### 🔹 Floorplan View (Pre-Placement)
 
 Core boundary defined with standard cell rows created for placement.
 
-![Floorplan View](sandbox:/mnt/data/112dfc15-c09a-4882-9b8d-e1c37c1f64c7.png)
+<img width="1920" height="1080" alt="Floorplan" src="https://github.com/user-attachments/assets/8dd69e8e-fe4c-4f24-aed4-e3cb1c261fcd" />
+
 
 ### 🔹 Placement + Power Grid Overview
 
 Standard cells placed; VDD/VSS rails clearly visible.
 
-![Placement View](sandbox:/mnt/data/d5d470d7-aaaa-4364-afa4-364fa7a7596c.png)
+<img width="1920" height="1080" alt="Ring and strip confuguration" src="https://github.com/user-attachments/assets/23e94b9a-78b1-4f89-9f24-6ac0e201cb12" />
+
 
 ### 🔹 Clock Tree Debugger
 
 Clock tree buffers inserted to balance skew across sequential elements.
 
-![Clock Tree Debugger](sandbox:/mnt/data/dca6e3a0-e97e-412f-bc70-2a6b161a44c0.png)
+<img width="1920" height="1080" alt="clock" src="https://github.com/user-attachments/assets/5785a0d3-9f07-4561-9e38-d1307d0f57de" />
+
 
 ### 🔹 Routed Design — Timing Analyzed
 
 All signal nets routed using metal layers with timing optimization.
 
-![Routed Layout](sandbox:/mnt/data/ff244e06-5a2c-41c4-9149-7d3f260bf77b.png)
+<img width="1920" height="1080" alt="Special route" src="https://github.com/user-attachments/assets/b40ff415-69dd-440e-a13f-4768a0970ef3" />
+
 
 ### 🔹 Final Routed Layout — Metal Layers Visible
 
 Multi‑layer routing with vias and power rails finalized.
 
-![Final Routed Layout](sandbox:/mnt/data/377a6f9e-1d4e-490d-b356-6ce32ae9784e.png)
+<img width="1920" height="1080" alt="final gds output" src="https://github.com/user-attachments/assets/d7d9542e-e6cb-4f78-8a9f-8404b56c999a" />
+
 
 ✔ Design achieves **clean timing closure** and successful PnR.
 
@@ -180,6 +189,90 @@ A: Ensure TB deasserts `reset` to **0** after a few cycles (see TB snippet above
 
 ---
 
+## 📝 Technical Specifications
+
+| Feature            | Details                                                 |
+| ------------------ | ------------------------------------------------------- |
+| ISA Support        | Minimal RISC‑V inspired operations (ADD/ADC/SUB/AND/OR) |
+| Pipeline Depth     | 2‑Stage (IF/EX)                                         |
+| Instruction Width  | 24 bits                                                 |
+| Register File      | 3 Registers (R0 write‑back)                             |
+| Data Path Width    | 8 bits                                                  |
+| Technology Node    | 90 nm CMOS                                              |
+| Design Flow        | RTL → Genus → Innovus → STA                             |
+| Frequency Achieved | ~126 MHz (Post‑Route)                                   |
+
+---
+
+## 🛠 Implementation Details
+
+✅ RTL Design (Verilog‑2001 compliant)
+
+* Separate modules for ALU, instruction memory, and top‑level processor
+* Clean and synthesizable
+
+✅ Verification
+
+* Fully synchronous design — single clock domain
+* Reset‑synchronized PC and pipeline register behavior
+* `$monitor` aids debugging
+* Waveform confirms correct arithmetic + PC increments
+
+✅ Backend Automation Scripts
+
+* Floorplan, placement, CTS, routing completed with auto‑flow
+* Clock tree optimization reduced skew significantly
+
+---
+
+## ⏱️ Synthesis & Timing Results (Post‑Route)
+
+| Metric                       | Value               |
+| ---------------------------- | ------------------- |
+| Target Clock                 | 8 ns (125 MHz)      |
+| Worst Negative Slack (Setup) | +0.084 ns — ✅ Clean |
+| Worst Hold Slack             | +0.081 ns — ✅ Clean |
+| Critical Path Delay          | 7.916 ns            |
+| Max Achievable Freq          | ~126 MHz            |
+
+🔎 Critical Path Dominated By:
+
+* ALU arithmetic path + register update
+
+🧩 Notes:
+
+* Slack margin indicates stable timing closure
+* Lower data path width → shorter critical logic depth
+
+---
+
+## ✅ Conclusion
+
+This project successfully demonstrates the complete ASIC design cycle for a mini 2‑stage RISC‑V inspired pipeline:
+
+✔ Functional Verification ✅
+✔ Synthesis + Netlist Generation ✅
+✔ Clock Tree + Routing ✅
+✔ Timing Closure ✅
+✔ Area & Power Estimation ✅
+
+📌 Outcome: A compact, teachable processor core suitable for ASIC flow training and research extensions.
+
+---
+
+## 📈 Future Scope
+
+🔹 Add support for full RV32I instruction decoding
+🔹 Include hazard detection + stall logic
+🔹 Add branching and jump control flow
+🔹 Integrate small data memory to enable store/load
+🔹 Reduce power using clock gating + multi‑Vt cells
+🔹 Explore scaling to 65 nm / 45 nm nodes
+
+> “Small Core. Full Flow. Big Learning.” 🚀
+
+---
+
 ## 📝 License
 
 MIT License — see `LICENSE` file.
@@ -190,10 +283,8 @@ MIT License — see `LICENSE` file.
 
 ## 📬 Contact
 
-* Email: [your.email@example.com](mailto:your.email@example.com)
-* LinkedIn: <your‑linkedin>
-* GitHub: <your‑github>
-* Institution: <your‑institute>
+* Email: gurudeepsubramanian@gmai.com
+* Institution: IIITDM Kurnool
 
 ---
 
