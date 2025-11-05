@@ -81,6 +81,63 @@ This project demonstrates a minimal, teaching‑friendly ASIC design built aroun
 ✔ PC increments sequentially each cycle
 
 > RISC‑V inspired 2‑stage pipelined processor (Fetch + Execute)
+---
+🧠 Theoretical Overview & Working Principle
+
+The developed design is a 2-Stage Pipelined RISC-V Inspired Processor, which performs basic arithmetic and logical operations using a compact datapath and a reduced instruction format. The aim is to demonstrate core CPU principles along with the complete RTL-to-GDSII physical design flow.
+
+🔹 Processor Organization
+
+The architecture is divided into two major stages:
+
+1️⃣ Instruction Fetch (IF) Stage
+PC (Program Counter) sends address to Instruction Memory
+24-bit instruction is fetched every cycle
+PC increments sequentially (+1) for next instruction
+
+2️⃣ Execute / Writeback (EX) Stage
+grp + opcode decoded to select ALU operation
+ALU performs arithmetic / logical functions in one cycle
+Result is written back into register R0
+Flags are updated based on computation
+Thus, one instruction completes each cycle → CPI ≈ 1.
+
+🔹 Instruction Structure — Custom RISC-V Inspired Format
+| Field    | Width   | Purpose                                           |
+| -------- | ------- | ------------------------------------------------- |
+| grp      | 2 bits  | Selects ALU mode (Arithmetic / Logical)           |
+| opcode   | 3 bits  | Specifies exact operation                         |
+| Reserved | 19 bits | Future extension (Immediate, Register specifiers) |
+
+🔹 ALU Working Principle
+The ALU supports 5 primary operations:
+| grp | opcode | Operation            |
+| --- | ------ | -------------------- |
+| 00  | 000    | ADD                  |
+| 00  | 001    | ADD with Carry (ADC) |
+| 00  | 010    | SUB                  |
+| 01  | 000    | AND                  |
+| 01  | 001    | OR                   |
+🔸 Operands are read from registers R1 and R2
+🔸 Output is always written to R0
+🔸 Carry flag supports multi-byte arithmetic expansion
+
+🔹 Pipeline Behavior
+IF Stage (Cycle N)
+↓ Instruction delivered to IF/ID Register
+EX Stage (Cycle N+1)
+↓ Result delivered → Written back to Register File
+✅ No hazards present in current ISA → No stalls required
+✅ Delivers one result every cycle → High throughput for its size
+
+✅ Summary of Working Principle
+
+✔ Instruction fetched → decoded → executed in the next cycle
+✔ PC automatically increments → linear program execution
+✔ ALU performs selected operation → result stored → flags updated
+✔ Small yet scalable architecture for backend flow demonstration
+
+Demonstrates core CPU principles like pipelining, datapath control, and synchronous design with the simplicity needed for academic ASIC implementation.
 
 ## ✅ Verification Summary
 
@@ -243,6 +300,29 @@ A: Ensure TB deasserts `reset` to **0** after a few cycles (see TB snippet above
 
 * Slack margin indicates stable timing closure
 * Lower data path width → shorter critical logic depth
+---
+🔍 Key Observations
+
+✔ Successful RTL-to-GDSII Flow
+The processor passed through all stages — synthesis, place-&-route, STA, and physical verification — demonstrating a complete ASIC design methodology.
+
+✔ Pipeline Improves Frequency
+Even with a simple 2-stage pipeline, the design achieved ~126 MHz in 90 nm due to reduced critical path length.
+
+✔ Small Area Footprint
+Total area of ~820 μm² indicates an extremely compact datapath suitable for low-cost embedded applications.
+
+✔ Power Efficient Architecture
+Very low switching activity and minimal logic resources resulted in only ~0.13 mW dynamic power at 50 MHz.
+
+✔ Clean Timing Closure
+Both setup and hold checks passed ✔ with positive slack margins, confirming robust timing stability post-route.
+
+✔ Minimal Routing Congestion
+Due to small logic count and uniform placement, routing utilized fewer metal layers with no critical hotspots.
+
+✔ Scalable Design Potential
+Architecture can be easily extended to larger datapaths (16/32-bit) or expanded into a fully compatible RISC-V core.
 
 ---
 
@@ -273,11 +353,15 @@ This project successfully demonstrates the complete ASIC design cycle for a mini
 
 ---
 
-## 📝 License
+Learning Outcomes ✅
 
-MIT License — see `LICENSE` file.
-
-© 2025 <Your Name>
+🔹RTL architecture partitioning
+🔹Instruction-level simulation and waveform verification
+🔹Synthesis with timing and logical optimization
+🔹Physical implementation: floorplan → CTS → routing
+🔹Sign-off: STA, DRC, LVS reports
+🔹Power + area estimation for final design
+📌 Result: A fully working silicon-ready processor implementation.
 
 ---
 
