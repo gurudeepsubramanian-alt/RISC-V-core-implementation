@@ -452,7 +452,7 @@ Course Information:
 
 ## 📬 Contact
 
-* Email: gurudeepsubramanian@gmai.com
+* Email: gurudeepsubramanian@gmai.com,manideepv2311@gmail.com
 * Institution: IIITDM Kurnool
 
 ---
