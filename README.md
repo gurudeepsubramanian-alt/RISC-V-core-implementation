@@ -1,10 +1,10 @@
 # 2‑Stage Pipelined Risc-V Processor: RTL → GDSII
 
-**VLSI Technology & License Status:** Academic flow using Cadence Genus & Innovus with university licenses. Repository contains RTL, testbench, and reproducible TCL; *no foundry IP is included*.
+**VLSI Technology & License Status:** Academic flow using Cadence Genus & Innovus with university licenses. Repository contains RTL, testbench, and reproducible TCL.
 
 A compact two‑stage (IF/EX) pipelined **RISC‑V inspired processor** with a lightweight ALU, implemented end‑to‑end from RTL to clean GDSII using a semi‑custom ASIC flow.
 
-**Overview • Architecture • Results • Getting Started • Docs**
+
 
 ---
 
@@ -12,7 +12,7 @@ A compact two‑stage (IF/EX) pipelined **RISC‑V inspired processor** with a l
 
 This project demonstrates a minimal, teaching‑friendly ASIC design built around a simple 8‑bit ALU and a 24‑bit instruction format, taken all the way from Verilog RTL through logic synthesis, place & route, sign‑off (STA/DRC/LVS), and GDSII generation.
 
-* Logarithmic design effort 😉, not logarithmic delay — but the pipeline hits clean timing at modest MHz in (Not used in this project)/90 nm.
+* Logarithmic design effort , not logarithmic delay — but the pipeline hits clean timing at modest MHz in (Not used in this project)/90 nm.
 * Designed and verified in **Cadence** tools; simulation can be done in any Verilog simulator.
 
 ### ✨ Key Highlights
@@ -128,15 +128,15 @@ IF Stage (Cycle N)
 EX Stage (Cycle N+1)
 ↓ Result delivered → Written back to Register File
 
-✅ No hazards present in current ISA → No stalls required
-✅ Delivers one result every cycle → High throughput for its size
+* No hazards present in current ISA → No stalls required
+* Delivers one result every cycle → High throughput for its size
 
 **✅ Summary of Working Principle**
 
-✔ Instruction fetched → decoded → executed in the next cycle
-✔ PC automatically increments → linear program execution
-✔ ALU performs selected operation → result stored → flags updated
-✔ Small yet scalable architecture for backend flow demonstration
+* Instruction fetched → decoded → executed in the next cycle
+*PC automatically increments → linear program execution
+* ALU performs selected operation → result stored → flags updated
+* Small yet scalable architecture for backend flow demonstration
 
 Demonstrates core CPU principles like pipelining, datapath control, and synchronous design with the simplicity needed for academic ASIC implementation.
 
@@ -241,13 +241,13 @@ LVS status: reported as clean.
 ## ❓ FAQ
 
 **Q: Does this implement full RISC‑V?**
-A: No. It’s a tiny educational core with an ALU slice and 2‑stage pipeline.
+ A: No. It’s a tiny educational core with an ALU slice and 2‑stage pipeline.
 
 **Q: Where do I get (Not used in this project)/90 nm libraries?**
-A: From your university/PDK provider. This repo excludes any proprietary libraries.
+ A: From your university/PDK provider. This repo excludes any proprietary libraries.
 
 **Q: Why does my sim never leave reset?**
-A: Ensure TB deasserts `reset` to **0** after a few cycles (see TB snippet above).
+ A: Ensure TB deasserts `reset` to **0** after a few cycles (see TB snippet above).
 
 ---
 
@@ -347,12 +347,12 @@ This project successfully demonstrates the complete ASIC design cycle for a mini
 
 ## 📈 Future Scope
 
-🔹 Add support for full RV32I instruction decoding
-🔹 Include hazard detection + stall logic
-🔹 Add branching and jump control flow
-🔹 Integrate small data memory to enable store/load
-🔹 Reduce power using clock gating + multi‑Vt cells
-🔹 Explore scaling to 65 nm / 45 nm nodes
+* Add support for full RV32I instruction decoding
+* Include hazard detection + stall logic
+* Add branching and jump control flow
+* Integrate small data memory to enable store/load
+* Reduce power using clock gating + multi‑Vt cells
+* Explore scaling to 65 nm / 45 nm nodes
 
 > “Small Core. Full Flow. Big Learning.” 🚀
 
@@ -361,61 +361,61 @@ This project successfully demonstrates the complete ASIC design cycle for a mini
 The presented 2-stage RISC-V inspired processor offers several promising research extensions in modern low-power computing and ASIC implementation:
 
 1️⃣ Approximate & Energy-Efficient Computing
-🔹Replace precise ALU with approximate arithmetic units
-🔹Tailor accuracy vs. power consumption for IoT & wearable applications
-🔹Dynamic precision scaling based on workload
+*Replace precise ALU with approximate arithmetic units
+*Tailor accuracy vs. power consumption for IoT & wearable applications
+*Dynamic precision scaling based on workload
 
 2️⃣ Machine Learning Assisted VLSI Optimization
-🔹Apply AI/ML for placement, routing & STA prediction
-🔹Automated design-space exploration for performance/power trade-offs
-🔹Reinforcement learning for adapting architecture based on workload
+*Apply AI/ML for placement, routing & STA prediction
+*Automated design-space exploration for performance/power trade-offs
+*Reinforcement learning for adapting architecture based on workload
 
 3️⃣ Fault-Tolerant & Radiation-Hardened Processor Design
-🔹Triple Modular Redundancy (TMR) for aerospace reliability
-🔹SEU-immune flip-flops and ECC-based register file protection
-🔹Hardened layout structures for space environments
+*Triple Modular Redundancy (TMR) for aerospace reliability
+*SEU-immune flip-flops and ECC-based register file protection
+*Hardened layout structures for space environments
 
 4️⃣ Technology Scaling to Advanced Nodes
-🔹Investigate impact of FinFET/FD-SOI at 7nm / 14nm / 28nm
-🔹Analyze leakage dominance and variation tolerance
-🔹Clock distribution resilience in nanoscale geometries
+*Investigate impact of FinFET/FD-SOI at 7nm / 14nm / 28nm
+*Analyze leakage dominance and variation tolerance
+*Clock distribution resilience in nanoscale geometries
 
 5️⃣ Asynchronous / Clockless Architectures
-🔹Remove global clock → reduce dynamic power & EMI
-🔹Improve robustness to PVT variations
-🔹Handshake-based data flow pipeline
+*Remove global clock → reduce dynamic power & EMI
+*Improve robustness to PVT variations
+*Handshake-based data flow pipeline
 
 6️⃣ Secure Micro-Architecture Extensions
-🔹Hardware cryptographic primitives for secure IoT processors
-🔹Side-channel attack resistant datapath and ALU structures
-🔹Secure boot and protected memory architecture
+*Hardware cryptographic primitives for secure IoT processors
+*Side-channel attack resistant datapath and ALU structures
+*Secure boot and protected memory architecture
 
 7️⃣ 3D IC Integration
-🔹Vertical stacking using TSV (Through-Silicon Vias)
-🔹Area-efficient memory/logic integration
-🔹Reduced wire delays → higher pipeline frequency
+*Vertical stacking using TSV (Through-Silicon Vias)
+*Area-efficient memory/logic integration
+*Reduced wire delays → higher pipeline frequency
 
 ---
 
 **Learning Outcomes ✅**
 
-🔹RTL architecture partitioning
-🔹Instruction-level simulation and waveform verification
-🔹Synthesis with timing and logical optimization
-🔹Physical implementation: floorplan → CTS → routing
-🔹Sign-off: STA, DRC, LVS reports
-🔹Power + area estimation for final design
-📌 Result: A fully working silicon-ready processor implementation.
+*RTL architecture partitioning
+*Instruction-level simulation and waveform verification
+*Synthesis with timing and logical optimization
+*Physical implementation: floorplan → CTS → routing
+*Sign-off: STA, DRC, LVS reports
+*Power + area estimation for final design
+* Result: A fully working silicon-ready processor implementation.
 
 ---
 **References**
-[1] P. Poorvaja Harish and R. Holla, “ASIC Design for a 32-bit RISC-V Processor,” International Journal of Engineering Research & Technology (IJERT), Vol. 12, Issue 08, Aug. 2023. This work specifically states: “the RTL to GDSII flow is performed for a 32-bit RISC-V processor using Qflow in 180 nm technology.” 
+*[1] P. Poorvaja Harish and R. Holla, “ASIC Design for a 32-bit RISC-V Processor,” International Journal of Engineering Research & Technology (IJERT), Vol. 12, Issue 08, Aug. 2023. This work specifically states: “the RTL to GDSII flow is performed for a 32-bit RISC-V processor using Qflow in 180 nm technology.” 
 IJERT
-[2] S. Nikhil Kumar Reddy, Shashank Viswanath Hosmath, Sharanakumar, Sandeep, and Vinay B. K., “Implementation of RISC-V SoC from RTL to GDS flow using Open-Source Tools,” IJRASET Journal for Research in Applied Science & Engineering Technology, 2022. DOI: 10.22214/ijraset.2022.44249. 
+*[2] S. Nikhil Kumar Reddy, Shashank Viswanath Hosmath, Sharanakumar, Sandeep, and Vinay B. K., “Implementation of RISC-V SoC from RTL to GDS flow using Open-Source Tools,” IJRASET Journal for Research in Applied Science & Engineering Technology, 2022. DOI: 10.22214/ijraset.2022.44249. 
 IJRASET
-[3] A. Waterman, Y. Lee, D. Patterson and K. Asanović, “The RISC-V Instruction Set Manual, Volume I: User-Level ISA,” Tech. Rep. UCB/EECS-2016-118, Univ. of California, Berkeley, May 31, 2016. 
+*[3] A. Waterman, Y. Lee, D. Patterson and K. Asanović, “The RISC-V Instruction Set Manual, Volume I: User-Level ISA,” Tech. Rep. UCB/EECS-2016-118, Univ. of California, Berkeley, May 31, 2016. 
 EECS at UC Berkeley
-[4] K. Asanović et al., “The Rocket Chip Generator,” UC Berkeley EECS Tech. Rep., Apr. 2016. 
+*[4] K. Asanović et al., “The Rocket Chip Generator,” UC Berkeley EECS Tech. Rep., Apr. 2016. 
 EECS at UC Berkeley
 
 ---
@@ -427,17 +427,17 @@ EECS at UC Berkeley
 | Logic Synthesis               | **Cadence Genus Synthesis Solution**              |
 | Place & Route                 | **Cadence Innovus Implementation System**         |
 | Technology Node               | **90 nm CMOS Standard Cell Library**              |
-| Verification                  | Functional Simulation, STA (Setup/Hold), DRC, LVS |
-| Reports & Debugging           | Waveforms, Timing Reports, Area/Power Analysis    |
-| GDS Export                    | Innovus Stream Out (GDSII Generation)             |
+| Verification                  | **Functional Simulation, STA (Setup/Hold), DRC, LVS** |
+| Reports & Debugging           | **Waveforms, Timing Reports, Area/Power Analysis **   |
+| GDS Export                    | **Innovus Stream Out (GDSII Generation)    **         |
 ---
-🎓 Academic Context
+**##🎓 Academic Context**
 Course Information
-Course: VLSI System Design Practice (EC-307)
-Faculty: Dr. P. Ranga Babu
-Department: Electronics and Communication Engineering
-Institution: Indian Institute of Information Technology Design and Manufacturing, Kurnool
-Academic Year: 2025-2026 (Semester - 5)
+*Course: VLSI System Design Practice (EC-307)
+*Faculty: Dr. P. Ranga Babu
+*Department: Electronics and Communication Engineering
+*Institution: Indian Institute of Information Technology Design and Manufacturing, Kurnool
+*Academic Year: 2025-2026 (Semester - 5)
 
 ## 📬 Contact
 
@@ -449,20 +449,20 @@ Academic Year: 2025-2026 (Semester - 5)
 ## 🌟 Acknowledgments
 This project was completed with support and guidance from:
 
-Dr. P. Ranga Babu — Course Instructor and Project Guide, Department of ECE, IIITDM Kurnool
-IIITDM Kurnool — For providing computational resources and infrastructure
-Cadence Design Systems — For access to industry-standard EDA tools
-Open Source Community — For educational resources and technical documentation
-Research Community — For foundational work in parallel prefix adder architectures
-Special thanks to all contributors who have provided feedback and suggestions for improvement.
+*Dr. P. Ranga Babu — Course Instructor and Project Guide, Department of ECE, IIITDM Kurnool
+*IIITDM Kurnool — For providing computational resources and infrastructure
+*Cadence Design Systems — For access to industry-standard EDA tools
+*Open Source Community — For educational resources and technical documentation
+*Research Community — For foundational work in parallel prefix adder architectures
+*Special thanks to all contributors who have provided feedback and suggestions for improvement.
 
 ---
 
 ## 👨‍🎓 About the Developer
 👨‍🎓 About the Developer
- Gurudeep
- Roll No.: 123ec0022
+ *Gurudeep
+ *Roll No.: 123ec0022
 
-Department of Electronics and Communication Engineering
+*Department of Electronics and Communication Engineering
 
-Indian Institute of Information Technology Design and Manufacturing, Kurnool
+*Indian Institute of Information Technology Design and Manufacturing, Kurnool
