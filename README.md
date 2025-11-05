@@ -127,6 +127,7 @@ IF Stage (Cycle N)
 ↓ Instruction delivered to IF/ID Register
 EX Stage (Cycle N+1)
 ↓ Result delivered → Written back to Register File
+
 ✅ No hazards present in current ISA → No stalls required
 ✅ Delivers one result every cycle → High throughput for its size
 
@@ -194,9 +195,13 @@ Multi‑layer routing with vias and power rails finalized.
 
 ✔ Design achieves **clean timing closure** and successful PnR.
 
+✔Physical Verification (90 nm)
+DRC status: reported as clean.
+LVS status: reported as clean.
+
 ---
 
-## 📊 Area & Power Analysis (90 nm — Estimated)
+## 📊 Area & Power Analysis (90 nm)
 
 > *These values are based on typical 90 nm standard-cell characteristics for small ALU-based datapath processors of comparable size.*
 
@@ -382,7 +387,7 @@ Learning Outcomes ✅
 
 ## 👨‍🎓 About the Developer
 
-**Developer:** Gurudeep
-**Roll No.:** 123EC0022
-**Course:** VLSI Lab
-**Guide:** Dr. Ranga Babu
+ Developer:Gurudeep
+ Roll No.:123EC0022
+ Course:VLSI Lab
+ Guide:Dr. Ranga Babu
