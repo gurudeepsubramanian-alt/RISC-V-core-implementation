@@ -4,8 +4,6 @@
 
 A compact two‑stage (IF/EX) pipelined **RISC‑V inspired processor** with a lightweight ALU, implemented end‑to‑end from RTL to clean GDSII using a semi‑custom ASIC flow.
 
-
-
 ---
 
 ## 🎯 Overview
