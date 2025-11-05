@@ -459,10 +459,8 @@ This project was completed with support and guidance from:
 ---
 
 ## 👨‍🎓 About the Developer
-👨‍🎓 About the Developer
- *Gurudeep
- *Roll No.: 123ec0022
 
-*Department of Electronics and Communication Engineering
-
-*Indian Institute of Information Technology Design and Manufacturing, Kurnool
+Gurudeep<br>
+Roll No.: 123EC0022<br>
+Department: Electronics and Communication Engineering<br>
+Indian Institute of Information Technology Design and Manufacturing, Kurnool<br>
