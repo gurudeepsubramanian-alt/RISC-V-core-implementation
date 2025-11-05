@@ -74,7 +74,7 @@ This project demonstrates a minimal, teaching‑friendly ASIC design built aroun
 │ ALU + WB   │                  │ ALU + WB   │
 └────────────┘                  └────────────┘
 ```
-give a better diagram github readme, mermaid if possible
+
 ---
 **🧠 Theoretical Overview & Working Principle**
 
