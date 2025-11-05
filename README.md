@@ -29,17 +29,36 @@ This project demonstrates a minimal, teaching‑friendly ASIC design built aroun
 ## 🧠 Architecture
 
 > RISC-V inspired 2-stage pipelined processor (Fetch + Execute)
-flowchart TD
 
-PC[Program Counter (PC)] -->|Address| IMEM[Instruction Memory<br/>(24-bit)]
-IMEM -->|Instruction| IFID[IF/ID Pipeline Register]
+### 🔹 High-Level Block Diagram
 
-IFID -->|Decoded Fields| ALU[ALU<br/>grp + opcode → Operation<br/>R1, R2 → Operands]
-ALU -->|Writeback| REG[Register File<br/>R0, R1, R2]
-
-REG -->|Operands| ALU
-PC -->|PC+1| PC
-
+```
+        ┌───────────────┐
+        │ Program Counter│
+        │     (PC)       │
+        └───────┬───────┘
+                │ PC
+                ▼
+        ┌───────────────────┐
+        │ Instruction Memory │
+        │   (24‑bit ROM)    │
+        └───────┬──────────┘
+                │ Instruction
+        ┌───────▼───────┐
+        │ IF/ID Pipeline │
+        │   Register     │
+        └───────┬───────┘
+                │ Decoded Fields
+        ┌───────▼────────────────────────┐
+        │             ALU                │
+        │  grp/opcode → Operation        │
+        │  R1,R2 → Operands              │
+        └───────┬────────────────────────┘
+                │ Writeback
+        ┌───────▼──────┐
+        │ Register File │   (R0 updated) 
+        │ R0,R1,R2      │
+        └───────────────┘
 ```
 
 ### 🔹 Pipeline Stage View
@@ -57,11 +76,7 @@ PC -->|PC+1| PC
 │ ALU + WB   │                  │ ALU + WB   │
 └────────────┘                  └────────────┘
 ```
-
-✔ Minimal pipeline → lower complexity & hazards
-✔ PC increments sequentially each cycle
-
-> RISC‑V inspired 2‑stage pipelined processor (Fetch + Execute)
+give a better diagram github readme, mermaid if possible
 ---
 **🧠 Theoretical Overview & Working Principle**
 
