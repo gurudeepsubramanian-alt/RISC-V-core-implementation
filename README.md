@@ -82,7 +82,7 @@ This project demonstrates a minimal, teaching‑friendly ASIC design built aroun
 
 > RISC‑V inspired 2‑stage pipelined processor (Fetch + Execute)
 ---
-🧠 Theoretical Overview & Working Principle
+**🧠 Theoretical Overview & Working Principle**
 
 The developed design is a 2-Stage Pipelined RISC-V Inspired Processor, which performs basic arithmetic and logical operations using a compact datapath and a reduced instruction format. The aim is to demonstrate core CPU principles along with the complete RTL-to-GDSII physical design flow.
 
@@ -131,7 +131,7 @@ EX Stage (Cycle N+1)
 ✅ No hazards present in current ISA → No stalls required
 ✅ Delivers one result every cycle → High throughput for its size
 
-✅ Summary of Working Principle
+**✅ Summary of Working Principle**
 
 ✔ Instruction fetched → decoded → executed in the next cycle
 ✔ PC automatically increments → linear program execution
@@ -306,7 +306,7 @@ A: Ensure TB deasserts `reset` to **0** after a few cycles (see TB snippet above
 * Slack margin indicates stable timing closure
 * Lower data path width → shorter critical logic depth
 ---
-🔍 Key Observations
+**🔍 Key Observations**
 
 ✔ Successful RTL-to-GDSII Flow
 The processor passed through all stages — synthesis, place-&-route, STA, and physical verification — demonstrating a complete ASIC design methodology.
@@ -356,9 +356,48 @@ This project successfully demonstrates the complete ASIC design cycle for a mini
 
 > “Small Core. Full Flow. Big Learning.” 🚀
 
+**🔬 Research Opportunities**
+
+The presented 2-stage RISC-V inspired processor offers several promising research extensions in modern low-power computing and ASIC implementation:
+
+1️⃣ Approximate & Energy-Efficient Computing
+🔹Replace precise ALU with approximate arithmetic units
+🔹Tailor accuracy vs. power consumption for IoT & wearable applications
+🔹Dynamic precision scaling based on workload
+
+2️⃣ Machine Learning Assisted VLSI Optimization
+🔹Apply AI/ML for placement, routing & STA prediction
+🔹Automated design-space exploration for performance/power trade-offs
+🔹Reinforcement learning for adapting architecture based on workload
+
+3️⃣ Fault-Tolerant & Radiation-Hardened Processor Design
+🔹Triple Modular Redundancy (TMR) for aerospace reliability
+🔹SEU-immune flip-flops and ECC-based register file protection
+🔹Hardened layout structures for space environments
+
+4️⃣ Technology Scaling to Advanced Nodes
+🔹Investigate impact of FinFET/FD-SOI at 7nm / 14nm / 28nm
+🔹Analyze leakage dominance and variation tolerance
+🔹Clock distribution resilience in nanoscale geometries
+
+5️⃣ Asynchronous / Clockless Architectures
+🔹Remove global clock → reduce dynamic power & EMI
+🔹Improve robustness to PVT variations
+🔹Handshake-based data flow pipeline
+
+6️⃣ Secure Micro-Architecture Extensions
+🔹Hardware cryptographic primitives for secure IoT processors
+🔹Side-channel attack resistant datapath and ALU structures
+🔹Secure boot and protected memory architecture
+
+7️⃣ 3D IC Integration
+🔹Vertical stacking using TSV (Through-Silicon Vias)
+🔹Area-efficient memory/logic integration
+🔹Reduced wire delays → higher pipeline frequency
+
 ---
 
-Learning Outcomes ✅
+**Learning Outcomes ✅**
 
 🔹RTL architecture partitioning
 🔹Instruction-level simulation and waveform verification
@@ -369,6 +408,36 @@ Learning Outcomes ✅
 📌 Result: A fully working silicon-ready processor implementation.
 
 ---
+**References**
+[1] P. Poorvaja Harish and R. Holla, “ASIC Design for a 32-bit RISC-V Processor,” International Journal of Engineering Research & Technology (IJERT), Vol. 12, Issue 08, Aug. 2023. This work specifically states: “the RTL to GDSII flow is performed for a 32-bit RISC-V processor using Qflow in 180 nm technology.” 
+IJERT
+[2] S. Nikhil Kumar Reddy, Shashank Viswanath Hosmath, Sharanakumar, Sandeep, and Vinay B. K., “Implementation of RISC-V SoC from RTL to GDS flow using Open-Source Tools,” IJRASET Journal for Research in Applied Science & Engineering Technology, 2022. DOI: 10.22214/ijraset.2022.44249. 
+IJRASET
+[3] A. Waterman, Y. Lee, D. Patterson and K. Asanović, “The RISC-V Instruction Set Manual, Volume I: User-Level ISA,” Tech. Rep. UCB/EECS-2016-118, Univ. of California, Berkeley, May 31, 2016. 
+EECS at UC Berkeley
+[4] K. Asanović et al., “The Rocket Chip Generator,” UC Berkeley EECS Tech. Rep., Apr. 2016. 
+EECS at UC Berkeley
+
+---
+**Tools and Technologies**
+| Category                      | Tools / Technologies                              |
+| ----------------------------- | ------------------------------------------------- |
+| Hardware Description Language | **Verilog HDL (2001 Standard)**                   |
+| Simulation                    | **Cadence NCSim / NCLaunch**                      |
+| Logic Synthesis               | **Cadence Genus Synthesis Solution**              |
+| Place & Route                 | **Cadence Innovus Implementation System**         |
+| Technology Node               | **90 nm CMOS Standard Cell Library**              |
+| Verification                  | Functional Simulation, STA (Setup/Hold), DRC, LVS |
+| Reports & Debugging           | Waveforms, Timing Reports, Area/Power Analysis    |
+| GDS Export                    | Innovus Stream Out (GDSII Generation)             |
+---
+🎓 Academic Context
+Course Information
+Course: VLSI System Design Practice (EC-307)
+Faculty: Dr. P. Ranga Babu
+Department: Electronics and Communication Engineering
+Institution: Indian Institute of Information Technology Design and Manufacturing, Kurnool
+Academic Year: 2025-2026 (Semester - 5)
 
 ## 📬 Contact
 
@@ -378,16 +447,22 @@ Learning Outcomes ✅
 ---
 
 ## 🌟 Acknowledgments
+This project was completed with support and guidance from:
 
-* Faculty & lab staff for EDA access and guidance
-* Cadence Design Systems (Genus/Innovus)
-* Open‑source community for examples and docs
+Dr. P. Ranga Babu — Course Instructor and Project Guide, Department of ECE, IIITDM Kurnool
+IIITDM Kurnool — For providing computational resources and infrastructure
+Cadence Design Systems — For access to industry-standard EDA tools
+Open Source Community — For educational resources and technical documentation
+Research Community — For foundational work in parallel prefix adder architectures
+Special thanks to all contributors who have provided feedback and suggestions for improvement.
 
 ---
 
 ## 👨‍🎓 About the Developer
+👨‍🎓 About the Developer
+ Gurudeep
+ Roll No.: 123ec0022
 
- Developer:Gurudeep
- Roll No.:123EC0022
- Course:VLSI Lab
- Guide:Dr. Ranga Babu
+Department of Electronics and Communication Engineering
+
+Indian Institute of Information Technology Design and Manufacturing, Kurnool
